@@ -15,10 +15,6 @@ app.use("/characters", authVerify, CharacterRoutes);
 app.use("/relations", authVerify, RelationRoutes);
 app.use("/auth", authRoutes);
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
 app.listen(8000, () => {
   connectDB();
   console.log("Server running on port 8000");

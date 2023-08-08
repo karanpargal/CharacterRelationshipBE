@@ -27,13 +27,7 @@ const characterSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Relation",
     },
-  ],
-  properties: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Property",
-    },
-  ],
+  ]
 });
 
 const Character = mongoose.model("Character", characterSchema);
