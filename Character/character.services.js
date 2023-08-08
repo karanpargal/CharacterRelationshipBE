@@ -3,7 +3,7 @@ const Character = require("./character.schema");
 const createCharacter = async (req, res) => {
   try {
     const character = await Character.create(req.body);
-    res.status(201).json(character);
+    res.status(201).json({ success: true, data: character });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -12,16 +12,22 @@ const createCharacter = async (req, res) => {
 const getCharacters = async (req, res) => {
   try {
     const characters = await Character.find();
-    res.status(200).json(characters);
+    res.status(200).json({
+      success: true,
+      data: characters,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const getCharacterById = async (req, res) => {
+const getCharacter = async (req, res) => {
   try {
     const character = await Character.findById(req.params.id);
-    res.status(200).json(character);
+    res.status(200).json({
+      success: true,
+      data: character,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -34,7 +40,10 @@ const updateCharacter = async (req, res) => {
       req.body,
       { new: true }
     );
-    res.status(200).json(character);
+    res.status(200).json({
+      success: true,
+      data: character,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -43,7 +52,10 @@ const updateCharacter = async (req, res) => {
 const deleteCharacter = async (req, res) => {
   try {
     const character = await Character.findByIdAndDelete(req.params.id);
-    res.status(200).json(character);
+    res.status(200).json({
+      success: true,
+      data: character,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -52,7 +64,7 @@ const deleteCharacter = async (req, res) => {
 module.exports = {
   createCharacter,
   getCharacters,
-  getCharacterById,
+  getCharacter,
   updateCharacter,
   deleteCharacter,
 };
